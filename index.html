@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script src="./mvvm.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1 data-model="title"></h1>
+        <div data-list="todos">
+            <li data-list-item="todos">
+                <p data-model="todos:creator"></p>
+                <ol data-list="todos:members">
+                    <li data-list-item="todos:members">
+                        <p data-model="todos:members:name"></p>
+                    </li>
+                </ol>
+            </li>
+        </div>
+    </div>
+    <div id="wrap">
+        <div>
+            <input type="text" data-model="v">
+            <p data-model="v"></p>
+        </div>
+    </div>
+    <script>
+        let data = {
+            title: 'todo',
+            user: 'mirone',
+            todos: [{
+                creator: 'keal',
+                done: 'undone',
+                content: 'writeMVVM',
+                date: '2016-11-17',
+                members: [{
+                    name: 'kaito'
+                }, {
+                    name: 'hito'
+                }, {
+                    name: 'QAQ'
+                }]
+            }, {
+                creator: 'mirone',
+                done: 'undone',
+                content: 'writeNode',
+                date: '2016-12-17',
+                members: [{
+                    name: 'hitomiao'
+                }, {
+                    name: 'miaomiao'
+                }]
+            }]
+        }
+        new Parser("#root", data)
+        let d = {
+            v: "ceshi"
+        }
+        new Parser("#wrap", d)
+    </script>
+</body>
+
+</html>
